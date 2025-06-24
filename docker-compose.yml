@@ -1,0 +1,52 @@
+version: '3.8'
+
+services:
+  svbanco:
+    image: mysql:5.7
+    container_name: nsvbanco
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: web
+      MYSQL_USER: web
+      MYSQL_PASSWORD: web
+    volumes:
+      - db_data:/var/lib/mysql
+
+  svphp:
+    depends_on:
+      - svbanco
+    image: wordpress:php7.4-apache
+    container_name: nsvphp
+    restart: always
+    ports:
+      - "666:80"
+    environment:
+      WORDPRESS_DB_HOST: svbanco
+      WORDPRESS_DB_USER: web
+      WORDPRESS_DB_PASSWORD: web
+      WORDPRESS_DB_NAME: web
+      APACHE_RUN_USER: www-data
+      APACHE_RUN_GROUP: www-data
+    user: "1000:33"
+    volumes:
+      - ./www:/var/www/html
+      - ./custom-php.ini:/usr/local/etc/php/conf.d/custom-upload.ini
+
+  svphpmyadmin:
+    depends_on:
+      - svbanco
+    image: phpmyadmin/phpmyadmin
+    container_name: nsvphpmyadmin
+    restart: always
+    ports:
+      - "667:80"
+    environment:
+      PMA_HOST: svbanco
+      MYSQL_ROOT_PASSWORD: rootpassword
+      UPLOAD_LIMIT: 128M
+      MEMORY_LIMIT: 256M
+      MAX_EXECUTION_TIME: 600
+
+volumes:
+  db_data:
