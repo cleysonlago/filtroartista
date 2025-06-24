@@ -1,0 +1,89 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", Sans-serif;
+}
+
+body {
+    line-height: 1;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+.main {
+    padding: 40px 40px;
+}
+
+.main h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.main h2 {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.main a {
+    margin-top: 20px;
+    display: inline-block;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+header {
+    width: 100%;
+    height: 200px;
+    background-color: antiquewhite;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+footer {
+    width: 100%;
+    height: 200px;
+    background-color: antiquewhite;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-alfabetico-artistas {
+    width: 100%;
+    height: 30px;
+    background-color: #3D647F;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.menu-alfabetico-artistas a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 5px 15px;
+    font-weight: bold;
+    border-right: 1px solid #ffffff;
+    text-align: center;
+}
+
+.menu-alfabetico-artistas a:last-child {
+    border-right: none;
+}

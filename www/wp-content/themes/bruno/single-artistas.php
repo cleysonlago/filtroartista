@@ -5,13 +5,13 @@
 
 get_header(); ?>
 
-<div class="container artista-single">
+<div class="main">
     <?php while (have_posts()) : the_post(); ?>
         
         <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-            <header class="artista-header">
+            <div class="artista-header">
                 <h1 class="artista-title"><?php the_field('nome'); ?></h1>
-            </header>
+            </div>
             
             <div class="artista-content">
                 <?php if (has_post_thumbnail()) : ?>

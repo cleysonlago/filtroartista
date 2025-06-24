@@ -2,8 +2,6 @@
 
 get_header();
 
-exibir_menu_alfabetico_artistas();
-
 $letra_filtro = isset($_GET['letra']) ? sanitize_text_field($_GET['letra']) : '';
 
 $args = array(
@@ -46,12 +44,16 @@ if ($query->have_posts()) {
         $query->the_post();
         $nome = get_field('nome');
         $descricao = get_field('descricao');
-        echo '<div class="artista">';
-        echo '<h2>' . esc_html($nome) . '</h2>';
-        echo '<p>' . esc_html($descricao) . '</p>';
-        echo '<a href="' . get_permalink() . '">Ver detalhes</a>';
-        echo '</div>';
+    ?>
+
+        <div class="main">
+            <h2><?php echo esc_html($nome); ?></h2>
+            <p><?php echo esc_html($descricao); ?></p>
+            <a href="<?php echo get_permalink(); ?>">Ver detalhes</a>
+        </div>
+
         
+    <?php    
     }
 } else {
     echo '<p>Nenhum artistas encontrado.</p>';
